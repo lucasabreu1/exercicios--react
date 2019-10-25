@@ -13,12 +13,17 @@ export default class Contador extends Component {
     //ou seja, sempre apontará para uma instância da classe Contador
     maisUm = () => {
         this.setState({numero: this.state.numero + 1})
-        this.props.numeroInicial=this.props.numeroInicial+12;
     }
 
-    menosUm = () => {
+    menosUm = (e) => {
         this.setState({numero: this.state.numero - 1})
         console.log(this.props.numeroInicial)
+    }
+
+    alterarNumero = diferenca => {
+        this.setState({
+            numero: this.state.numero + diferenca
+        })
     }
     
     render(){
@@ -27,6 +32,8 @@ export default class Contador extends Component {
                 <div>Número: {this.state.numero}</div>
                 <button onClick={this.maisUm}>Inc</button>
                 <button onClick={this.menosUm}>Dec</button>
+                <button onClick={() => this.alterarNumero(10)}>Inc 10</button>
+                <button onClick={() => this.alterarNumero(-10)}>Inc 10</button>
             </div>
         )
     }
